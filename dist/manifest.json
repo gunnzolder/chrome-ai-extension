@@ -1,0 +1,30 @@
+{
+  "name": "Chrome AI Extension",
+  "description": "A custom AI extension for Google Chrome",
+  "homepage_url": "https://github.com/gunnzolder/chrome-ai-extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+    "action": {
+    "default_title": "execute.js will run (watch the Chrome DevTools' console)"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*",
+        "file://*/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs", "notifications", "storage"],
+  "options_page": "settings.html",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  }
+}

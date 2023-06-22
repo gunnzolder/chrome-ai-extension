@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 300px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Settings</h2>
+    <form id="settingsForm">
+        <label for="apiKeyInput">API Key:</label>
+        <br>
+        <input type="text" id="apiKeyInput" name="apiKey" required>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+    <div id="message"></div>
+
+    <script src="settings.js"></script>
+</body>
+
+</html>

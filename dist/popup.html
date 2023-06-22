@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #promptPopup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 9999;
+    }
+
+    #promptTextarea {
+      width: 100%;
+      height: 120px;
+      margin-bottom: 10px;
+    }
+
+    #submitButton,
+    #dismissButton {
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+  </style>
+  <title>Prompt Popup</title>
+</head>
+<body>
+  <div id="promptPopup">
+    <textarea id="promptTextarea" placeholder="Enter your prompt..."></textarea>
+    <button id="submitButton">Submit</button>
+    <button id="dismissButton">Dismiss</button>
+  </div>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", submitPrompt);
+        document.getElementById("dismissButton").addEventListener("click", dismissPopup);
+
+        function submitPrompt() {
+            const prompt = document.getElementById("promptTextarea").value;
+            chrome.runtime.sendMessage({
+                action: "submitPrompt",
+                prompt: prompt,
+            });
+            window.close();
+        }
+
+        function dismissPopup() {
+            window.close();
+        }
+    </script>
+
+</body>
+</html>
